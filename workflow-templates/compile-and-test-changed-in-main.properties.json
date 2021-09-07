@@ -1,0 +1,12 @@
+{
+    "name": "Compile and test changed in main",
+    "description": "This workflow will compile and test any and all changes that are merged into the main branch.",
+    "iconName": "compile-and-test-changed-in-main.properties",
+    "categories": [
+        ".NET Core",
+        "C#"
+    ],
+    "filePatterns": [
+        "*.cs$"
+    ]
+}
