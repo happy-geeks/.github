@@ -1,0 +1,13 @@
+{
+    "name": "Publish new releases",
+    "description": "This workflow will automatically publish new releases, when a tag has been created that starts with 'v'.",
+    "iconName": "publish-new-releases",
+    "categories": [
+        ".NET Core",
+        ".NET 5",
+        "C#"
+    ],
+    "filePatterns": [
+        "*.cs$"
+    ]
+}
