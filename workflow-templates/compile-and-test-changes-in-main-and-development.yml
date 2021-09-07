@@ -2,9 +2,9 @@ name: Compile and test changes in master
 
 on:
   push:
-    branches: [ main, development ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main, development ]
+    branches: [ main, develop ]
 
 jobs:
   build:
