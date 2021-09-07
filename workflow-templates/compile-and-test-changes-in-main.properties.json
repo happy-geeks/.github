@@ -4,6 +4,7 @@
     "iconName": "compile-and-test-changed-in-main.properties",
     "categories": [
         ".NET Core",
+        ".NET 5",
         "C#"
     ],
     "filePatterns": [
