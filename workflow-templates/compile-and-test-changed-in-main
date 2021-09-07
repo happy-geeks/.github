@@ -1,0 +1,31 @@
+name: Compile and test changes in master
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Add NuGet Sources
+      run: dotnet nuget add source --username GilianJuice --password ${{ secrets.HAPPYGEEKSNUGET }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/happy-geeks/index.json"
+      
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+    
+    - name: Remove NuGet Sources
+      if: ${{ always() }}
+      run: dotnet nuget remove source github
