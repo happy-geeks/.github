@@ -30,7 +30,7 @@ jobs:
 
     - name: dotnet publish 
       run: |
-        dotnet publish -c Release -o "${{ secrets.PUBLISH_LOCATION }}" --self-contained true  -r win-x64
+        dotnet publish -c Release -o "${{ secrets.PUBLISH_LOCATION }}" --self-contained true  -r win-x64 /p:EnvironmentName=Live
       
     - name: Start application pool
       if: ${{ always() }}
