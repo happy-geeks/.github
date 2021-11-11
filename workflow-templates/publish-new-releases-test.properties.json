@@ -1,7 +1,7 @@
 {
-    "name": "Publish new releases",
-    "description": "This workflow will automatically publish new releases, when a tag has been created that starts with 'v'.",
-    "iconName": "publish-new-releases",
+    "name": "Publish new releases to test environment",
+    "description": "This workflow will automatically publish new releases, when commit has been done in develop.",
+    "iconName": "publish-new-releases-test",
     "categories": [
         ".NET Core",
         ".NET 5",
