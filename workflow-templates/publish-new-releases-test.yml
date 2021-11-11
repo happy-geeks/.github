@@ -1,9 +1,9 @@
-name: Publish new releases
+name: Publish new releases to Test environment
 
 on:
   push:
-    tags:
-    - v*
+    branches:
+      - develop
 
 jobs:
   build:
@@ -26,15 +26,15 @@ jobs:
       run: dotnet test --no-build --verbosity normal
       
     - name: Stop application pool
-      run: Stop-WebAppPool -Name ${{ secrets.APPLICATION_POOL }}
+      run: Stop-WebAppPool -Name ${{ secrets.APPLICATION_POOL_TEST }}
 
     - name: dotnet publish 
       run: |
-        dotnet publish -c Release -o "${{ secrets.PUBLISH_LOCATION }}" --self-contained true  -r win-x64 /p:EnvironmentName=Live
+        dotnet publish -c Release -o "${{ secrets.PUBLISH_LOCATION_TEST }}" --self-contained true  -r win-x64 /p:EnvironmentName=Acceptance
       
     - name: Start application pool
       if: ${{ always() }}
-      run: Start-WebAppPool -Name ${{ secrets.APPLICATION_POOL }}
+      run: Start-WebAppPool -Name ${{ secrets.APPLICATION_POOL_TEST }}
     
     - name: Remove NuGet Sources
       if: ${{ always() }}
