@@ -12,10 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Add NuGet Sources
-      run: dotnet nuget add source --username GilianJuice --password ${{ secrets.HAPPYGEEKSNUGET }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/happy-geeks/index.json"
-      
+
     - name: Restore dependencies
       run: dotnet restore
       
@@ -35,7 +32,3 @@ jobs:
     - name: Start application pool
       if: ${{ always() }}
       run: Start-WebAppPool -Name ${{ secrets.APPLICATION_POOL_TEST }}
-    
-    - name: Remove NuGet Sources
-      if: ${{ always() }}
-      run: dotnet nuget remove source github
