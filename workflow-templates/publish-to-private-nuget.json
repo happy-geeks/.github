@@ -1,0 +1,13 @@
+{
+    "name": "Publish new releases the Happy Geeks private NuGet repository",
+    "description": "This workflow will automatically publish new releases to our private NuGet repository, when a new version tag has been created.",
+    "iconName": "publish-to-private-nuget",
+    "categories": [
+        ".NET Core",
+        ".NET 5",
+        "C#"
+    ],
+    "filePatterns": [
+        "*.cs$"
+    ]
+}
