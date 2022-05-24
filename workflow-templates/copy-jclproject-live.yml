@@ -3,7 +3,7 @@ name: Copy repo to publish location
 on:
    push:
     branches:
-      - main
+      - master
 
 jobs:
    copyfiles:
