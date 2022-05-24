@@ -15,11 +15,8 @@ jobs:
       - name: Stop application pool
         run: Stop-WebAppPool -Name "${{ secrets.APPLICATION_POOL_LIVE }}"
       
-      - name: Change directory to site
-        run: cd {{ secrets.PUBLISH_LOCATION_LIVE }}
-      
       - name: copy files from worker to site
-        run: Xcopy {{ secrets.WORKER_LOCATION_LIVE }} {{ secrets.PUBLISH_LOCATION_LIVE }} /E/H/C/I/exclude:actionrunnerexclusions.txt/Y
+        run: Xcopy ${{ secrets.WORKER_LOCATION_LIVE }} ${{ secrets.PUBLISH_LOCATION_LIVE }} /E/H/C/I/exclude:${{ secrets.PUBLISH_LOCATION_LIVE }}\actionrunnerexclusions.txt/Y
 
       - name: Start application pool
         if: ${{ always() }}
