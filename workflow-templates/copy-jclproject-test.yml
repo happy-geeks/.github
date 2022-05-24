@@ -1,4 +1,4 @@
-name: Copy repo to publish location
+name: Copy repo to test publish location
 
 on:
    push:
