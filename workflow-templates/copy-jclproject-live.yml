@@ -1,4 +1,4 @@
-name: Copy repo to publish location
+name: Copy repo to live publish location
 
 on:
    push:
@@ -11,20 +11,7 @@ jobs:
       
       steps:
       - uses: actions/checkout@v2
-      
-      - name: Stop application pool
-        run: Stop-WebAppPool -Name "${{ secrets.APPLICATION_POOL_LIVE }}"
-        
-      - name: Wait until application pool has stopped
-        run: for (($i = 0); (((Get-WebAppPoolState -Name "${{ secrets.APPLICATION_POOL_LIVE }}").Value) -ne "Stopped") -and ($i -lt 10); $i++)
-               {
-                  Write-Output "Application still running, waiting for it to stop. Retrying in 2 seconds...";
-                  sleep 2
-               }
-      
+
       - name: copy files from worker to site
         run: Xcopy ${{ secrets.WORKER_LOCATION_LIVE }} ${{ secrets.PUBLISH_LOCATION_LIVE }} /E/H/C/I/exclude:${{ secrets.PUBLISH_LOCATION_LIVE }}\actionrunnerexclusions.txt/Y
 
-      - name: Start application pool
-        if: ${{ always() }}
-        run: Start-WebAppPool -Name "${{ secrets.APPLICATION_POOL_LIVE }}"
