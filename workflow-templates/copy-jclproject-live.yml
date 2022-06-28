@@ -13,5 +13,5 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: copy files from worker to site
-        run: Xcopy ${{ secrets.WORKER_LOCATION_LIVE }} ${{ secrets.PUBLISH_LOCATION_LIVE }} /E/H/C/I/exclude:${{ secrets.PUBLISH_LOCATION_LIVE }}\actionrunnerexclusions.txt/Y
+        run: cd "${{ secrets.PUBLISH_LOCATION_LIVE }}"; Xcopy "${{ secrets.WORKER_LOCATION_LIVE }}" "${{ secrets.PUBLISH_LOCATION_LIVE }}" /E/H/C/I/exclude:actionrunnerexclusions.txt/Y
 
