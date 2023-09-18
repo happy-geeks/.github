@@ -26,8 +26,7 @@ jobs:
       run: Stop-WebAppPool -Name ${{ secrets.APPLICATION_POOL_TEST }}
 
     - name: dotnet publish 
-      run: |
-        dotnet publish -c Release -o "${{ secrets.PUBLISH_LOCATION_TEST }}" --self-contained true  -r win-x64 /p:EnvironmentName=Acceptance
+      run: dotnet publish -c Release -o "${{ secrets.PUBLISH_LOCATION_TEST }}" --self-contained true  -r win-x64 /p:EnvironmentName=Acceptance
       
     - name: Start application pool
       if: ${{ always() }}
