@@ -8,12 +8,12 @@ on:
 jobs:
   add-private-nuget-source:
     name: Add Happy Horizon private NuGet source
-    uses: happy-geeks/.github/workflow-templates/add-private-nuget-source.yml
+    uses: ./.github/workflows/add-private-nuget-source.yml
     secrets: inherit
 
   deploy-test-to-iis:
     name: Deploy Test environment to IIS
-    uses: happy-geeks/.github/workflow-templates/deploy-gcl-project-to-iis.yml
+    uses: ./.github/workflows/deploy-gcl-project-to-iis.yml
     with:
       action_runner_label: test
       publish_confiugration: Debug
@@ -24,5 +24,5 @@ jobs:
 
   remove-private-nuget-source:
     name: Remove Happy Horizon private NuGet source
-    uses: happy-geeks/.github/workflow-templates/remove-private-nuget-source.yml
+    uses: ./.github/workflows/remove-private-nuget-source.yml
     secrets: inherit

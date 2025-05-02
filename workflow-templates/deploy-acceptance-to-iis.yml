@@ -8,7 +8,7 @@ on:
 jobs:
   deploy-acceptance-to-iis:
     name: Deploy Acceptance environment to IIS
-    uses: happy-geeks/.github/workflow-templates/deploy-gcl-project-to-iis.yml
+    uses: ./.github/workflows/deploy-gcl-project-to-iis.yml
     with:
       action_runner_label: acceptance
       publish_confiugration: Release
