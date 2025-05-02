@@ -1,0 +1,13 @@
+{
+    "name": "Remove Happy Horizon private NuGet source",
+    "description": "This is a reusable workflow to remove the private NuGet Source for Happy Horizon. This should be called after any other workflow that has used the private NuGet source.",
+    "iconName": "octicon mark-github",
+    "categories": [
+        "Happy Horizon",
+        "deployment",
+        "dependency-management"
+    ],
+    "filePatterns": [
+        "*.cs$"
+    ]
+}

@@ -1,0 +1,28 @@
+name: Deploy Test environment to IIS
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  add-private-nuget-source:
+    name: Add Happy Horizon private NuGet source
+    uses: happy-geeks/.github/workflow-templates/add-private-nuget-source.yml
+    secrets: inherit
+
+  deploy-test-to-iis:
+    name: Deploy Test environment to IIS
+    uses: happy-geeks/.github/workflow-templates/deploy-gcl-project-to-iis.yml
+    with:
+      action_runner_label: test
+      publish_confiugration: Debug
+      environment_name: Test
+      publish_location: ${{ vars.PUBLISH_LOCATION_TEST }}
+      application_pool: ${{ vars.APPLICATION_POOL_TEST }}
+    secrets: inherit
+
+  remove-private-nuget-source:
+    name: Remove Happy Horizon private NuGet source
+    uses: happy-geeks/.github/workflow-templates/remove-private-nuget-source.yml
+    secrets: inherit

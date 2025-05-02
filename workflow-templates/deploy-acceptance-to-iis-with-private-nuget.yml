@@ -1,0 +1,28 @@
+name: Deploy Acceptance environment to IIS
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  add-private-nuget-source:
+    name: Add Happy Horizon private NuGet source
+    uses: happy-geeks/.github/workflow-templates/add-private-nuget-source.yml
+    secrets: inherit
+
+  deploy-acceptance-to-iis:
+    name: Deploy Acceptance environment to IIS
+    uses: happy-geeks/.github/workflow-templates/deploy-gcl-project-to-iis.yml
+    with:
+      action_runner_label: acceptance
+      publish_confiugration: Release
+      environment_name: Acceptance
+      publish_location: ${{ vars.PUBLISH_LOCATION_ACCEPTANCE }}
+      application_pool: ${{ vars.APPLICATION_POOL_ACCEPTANCE }}
+    secrets: inherit
+
+  remove-private-nuget-source:
+    name: Remove Happy Horizon private NuGet source
+    uses: happy-geeks/.github/workflow-templates/remove-private-nuget-source.yml
+    secrets: inherit

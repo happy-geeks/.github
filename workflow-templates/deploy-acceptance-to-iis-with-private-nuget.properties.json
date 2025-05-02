@@ -1,0 +1,14 @@
+{
+    "name": "Deploy Acceptance environment with private NuGet to IIS",
+    "description": "This is a workflow to deploy the acceptance environment of a GCL project that needs our private NuGet repository to IIS on a Windows server.",
+    "iconName": "octicon globe",
+    "categories": [
+        "Happy Horizon",
+        "deployment",
+        ".NET",
+        "C#"
+    ],
+    "filePatterns": [
+        "*.cs$"
+    ]
+}

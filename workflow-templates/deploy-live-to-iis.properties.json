@@ -1,0 +1,14 @@
+{
+    "name": "Deploy Live environment to IIS",
+    "description": "This is a workflow to deploy the live / production environment of a GCL project to IIS on a Windows server.",
+    "iconName": "octicon globe",
+    "categories": [
+        "Happy Horizon",
+        "deployment",
+        ".NET",
+        "C#"
+    ],
+    "filePatterns": [
+        "*.cs$"
+    ]
+}

@@ -1,0 +1,11 @@
+name: Add Happy Horizon private NuGet source
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+
+    steps:
+    - name: Add NuGet Source
+      run: dotnet nuget add source --username ${{ vars.NUGET_USERNAME }} --password ${{ secrets.HAPPYGEEKSNUGET }} --store-password-in-clear-text --name HappyHorizon "${{ vars.NUGET_SOURCE }}"

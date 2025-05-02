@@ -1,0 +1,13 @@
+{
+    "name": "Add Happy Horizon private NuGet source",
+    "description": "This is a reusable workflow to add the private NuGet Source for Happy Horizon. This should be called before any other workflow that needs to use the private NuGet source.",
+    "iconName": "octicon mark-github",
+    "categories": [
+        "Happy Horizon",
+        "deployment",
+        "dependency-management"
+    ],
+    "filePatterns": [
+        "*.cs$"
+    ]
+}

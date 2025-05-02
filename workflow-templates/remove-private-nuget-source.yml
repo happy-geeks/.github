@@ -1,0 +1,12 @@
+name: Remove Happy Horizon private NuGet source
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+
+    steps:
+    - name: Remove NuGet Source
+      if: ${{ always() }}
+      run: dotnet nuget remove source HappyHorizon

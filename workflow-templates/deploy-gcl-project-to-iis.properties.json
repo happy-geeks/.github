@@ -1,0 +1,14 @@
+{
+    "name": "Deploy to IIS",
+    "description": "This is a reusable workflow to deploy a GCL project to IIS on a Windows server. This has variables to determine the environment and the server to deploy to.",
+    "iconName": "octicon globe",
+    "categories": [
+        "Happy Horizon",
+        "deployment",
+        ".NET",
+        "C#"
+    ],
+    "filePatterns": [
+        "*.cs$"
+    ]
+}

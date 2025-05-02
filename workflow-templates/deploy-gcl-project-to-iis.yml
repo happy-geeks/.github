@@ -1,0 +1,49 @@
+name: Deploy project to IIS
+
+on:
+  workflow_call:
+    inputs:
+      action_runner_label:
+        required: true
+        type: string
+        default: self-hosted
+      publish_confiugration:
+        required: true
+        type: string
+        default: Release
+      environment_name:
+        required: true
+        type: string
+      publish_location:
+        required: true
+        type: string
+      application_pool:
+        required: true
+        type: string
+
+jobs:
+  build:
+
+    runs-on: ${{ inputs.action_runner_label }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      
+    - name: Stop application pool
+      run: Stop-WebAppPool -Name ${{ inputs.application_pool }}
+
+    - name: Publish
+      run: dotnet publish -c ${{ inputs.publish_confiugration }} -o "${{ inputs.publish_location }}" --self-contained true -r win-x64 /p:EnvironmentName=${{ inputs.environment_name }}
+      
+    - name: Start application pool
+      if: ${{ always() }}
+      run: Start-WebAppPool -Name ${{ inputs.application_pool }}
